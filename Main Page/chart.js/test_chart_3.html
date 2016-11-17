@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Line Chart</title>
+    <script src="C:\Users\Daveo30\Documents\ittproject\chart.js\Chart.bundle.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <style>
+    canvas{
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div style="width:75%;">
+        <canvas id="canvas"></canvas>
+    </div>
+
+var chartInstance = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: {
+        title: {
+            display: true,
+            text: 'Custom Chart Title'
+        }
+    }
+})
+
+</body>
+</html>	

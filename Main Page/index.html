@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    <title>TrackIt</title>
+	<style>
+	.button4 {
+    background-color: #f2f2f2;
+    color: black;
+    border: 2px solid #f2f2f2;
+	border-radius: 8px;
+	font-size: 20px;
+	padding: 16px;
+
+	}
+
+	.button4:hover {background-color: white;}
+	
+	.button4 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button4 span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button4:hover span {
+  padding-right: 25px;
+}
+
+.button4:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+	</style>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+    <script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/Chart.js"></script>
+	<script src="assets/js/modernizr.custom.js"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+
+  <body data-spy="scroll" data-offset="0" data-target="#theMenu">
+		
+
+		
+		
+		
+	
+	<!-- Menu -->
+	
+	<nav class="menu" id="theMenu">
+		
+		<div class="menu-wrap">
+			<h1 class="logo"><a href="index.html#home">TrackIt</a></h1>
+			<i class="icon-remove menu-close"></i>
+			<a href="#home" class="smoothScroll">Home</a>
+			<a href="#services" class="smoothScroll">Goal Review</a>
+			<a href="#portfolio" class="smoothScroll">Timer</a>
+			<a href="#about" class="smoothScroll">Chart Types</a>
+			<a href="#contact" class="smoothScroll">Set Goals</a>
+	
+		</div>
+		
+		<!-- Menu button -->
+		<div id="menuToggle"><i class="icon-reorder"></i></div>
+		
+		
+	</nav>
+	
+
+	
+			
+
+	
+	<!-- ========== HEADER SECTION ========== -->
+	<section id="home" name="home"></section>
+	
+	
+	<div id="headerwrap">
+		<div class="container">
+		
+		
+		
+		
+			<!-- Notes -->
+	
+	
+		
+		<div align="left" id="theNote">		
+			<button id="myBtn" class="button medium-btn button4">
+				<i class="material-icons">content_paste</i>
+			</button>
+		</div>
+			<div id="myModal" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				 <div class="modal-header">
+			<span class="close">×</span>
+				<h2>Enter Notes</h2>
+			</div>
+			<div class="modal-body">
+			<p>
+			<form action="/cgi-bin/registration.py">
+			<input type="text" name="note_data" rows="6" cols="50" id="note_text"/></p>
+			<p>Notes will be saved automatically..</p>
+			</div>
+			<div align="center" class="modal-footer">
+			<input type="submit" value="Save-it" id="savebtn" />
+			
+			</form>
+			
+			<input type="submit" id="dispbtn"  onclick="submit();" value="Display Last Note">
+			
+
+
+				</div>
+			</div>
+			</div>
+			
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	<!--	
+			<div align="center" id="theMusic">		
+			<button id="playpause" onclick="playmusic()" class="button medium-btn button4">
+				<i class="material-icons">audiotrack</i>
+			</button>
+		    </div> -->
+		
+
+
+		
+		<!-- Notes button -->
+			<br>
+			<h1>TrackIt</h1>
+			<h2>Welcome User</h2>
+			<div class="row">
+				<br>
+				<br>
+				<br>
+				<div class="col-lg-6 col-lg-offset-3">
+				</div>
+			</div>
+		</div><!-- /container -->
+	</div><!-- /headerwrap -->
+	
+	
+	<!-- ========== WHITE SECTION ========== -->
+	<div id="w">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+				<h3><i>“By recording your dreams and goals on paper, you set in motion the process of becoming the person you most want to be. Put your future in good hands — your own.” </i>–Mark Victor Hansen
+				</h3>
+				<h6>Quote 1.
+				</h3>
+				</div>
+			</div>
+		</div><!-- /container -->
+	</div><!-- /w -->
+	
+	<!-- ========== SERVICES - GREY SECTION ========== -->
+	<section id="services" name="services"></section>
+	<div id="g">
+		<div class="container">
+			<div class="row">
+				<h3>Goal Review</h3>
+				<br>
+				<h5><a href="test_chart_2.html"> Check Out Goal Progress</a></h5>
+				<br>
+				<h5><a href="barchart.html"> Check Out Goal Progress in a bar chart</a></h5>
+				<br>
+				<h5><a href="piechart.html"> Check Out Goal Progress in a pie chart</a></h5>
+				<br>
+				
+				<p><h3>Goal-1</h3>
+				<form action="">
+				
+				<input type="checkbox" name="target1" value="target1"> Target-1<br>
+				<input type="checkbox" name="target2" value="target2"> Target-2
+				
+				</form>
+			</div>
+		</div><!-- /container -->
+	</div><!-- /g -->
+	
+
+	<section id="portfolio" name="portfolio"></section>
+	<div id="portfoliowrap">
+		<div class="container">
+			<div class="row">
+				<h3>MAKE IT OR BREAK IT IN..</h3>
+				<br>
+				<br>
+				<table class="countdownContainer"  style="padding:25px; margin: 0 auto;">
+			<tr></tr>
+			<tr style="color:#ffffff; font-size: 30px;">
+			<td id="days" style="padding:30px; border-style: outset;  text-align: center;" >26</td>
+			<td>  </td>
+			<td id="hours" style="padding:28px; border-style: outset; text-align: center;">4</td>
+			<td>  </td>
+			<td id="minutes" style="padding:25px; border-style: outset; text-align: center;">30</td>
+			<td>  </td>
+			<td id="seconds" style="padding:25px; border-style: outset; text-align: center;">45</td>
+			</tr>
+			<tr>  </tr>
+			<tr class="info" style="font-size: 25px;
+	color: #ffffff;">
+			<td style="padding:30px;">Days</td>
+			<td>             </td>
+			<td style="padding:28px;">Hours</td>
+			<td>             </td>
+			<td style="padding:25px;">Minutes</td>
+			<td>             </td>
+			<td style="padding:25px;">Seconds</td>
+			</tr>
+			</table>
+			<script type="text/javascript">
+			function countdown(){
+			var now=new Date();
+			var eventDate=new Date(2016,11,25);
+			var currentTime=now.getTime();
+			var eventTime=eventDate.getTime();
+			var remTim=eventTime-currentTime;
+			var s=Math.floor(remTim/1000);
+			var m=Math.floor(s/60);
+			var h=Math.floor(m/60);
+			var d=Math.floor(h/24);
+			h%=24;
+			m%=60;
+			s%=60;
+			h=(h<10) ? "0" + h :h;
+			m=(m<10) ?"0" + m :m;
+			s=(s<10) ?"0" + s :s;
+			
+			document.getElementById("days").innerText=d;
+			document.getElementById("hours").innerText=h;
+			document.getElementById("minutes").innerText=m;
+			document.getElementById("seconds").innerText=s;
+			
+			setTimeout(countdown,1000);
+			
+			}
+			countdown(); 
+			</script>			
+			</div>	
+		</div><!-- /container -->
+	</div><!-- /portfoliowrap -->
+	
+	<!-- ========== WHITE SECTION ========== -->
+	<div id="w">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+				<h3> <i>“One part at a time, one day at a time, we can accomplish any goal we set for ourselves.”</i> — Karen Casey
+				</h3>
+				<h6>Quote 2.
+				</h6>
+				</div>
+			</div>
+		</div><!-- /container -->
+	</div><!-- /w -->
+	
+	<!-- ========== ABOUT - GREY SECTION ========== -->
+	<section id="about" name="about"></section>
+	<div id="g">
+		<div class="container">
+			<div class="row">
+				<h3>CHART TYPES</h3>
+				<br>
+				
+				<img href src="assets/img/toc1.png"></a>
+				
+					<img href src="assets/img/toc2.png"></a>
+				
+					<img href src="assets/img/toc3.png"></a>
+				
+			</div>
+		</div><!-- /container -->
+	</div><!-- /g -->
+	
+	<!-- ========== FOOTER SECTION ========== -->
+	<section id="contact" name="contact"></section>
+	<div id="f">
+		<div class="container">
+			<div class="row">
+					<h3><b>Take your first step to success</b></h3>
+					<br>
+					<button class="button medium-btn button4">Set Goals</button>
+				</div>
+			</div>
+		</div><!-- /container -->
+	</div><!-- /f -->
+	
+	<audio autoplay="autoplay" loop="loop">
+    <source src="WhiteIverson.mp3" type="audio/mp3">
+
+	</audio>
+	
+	
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script type="text/javascript">
+	// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+ 
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modalc
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+	</script>
+	
+	<script  type="text/javascript">
+	function playmusic(){
+	var audio = new Audio('C:\Users\Daveo30\Documents\ittlogin\TrackIt\Main Page\WhiteIverson.mp3');
+		audio.play();
+	}
+	
+	
+	
+	function submit()
+	{
+		var latestnote;
+
+		var http = new XMLHttpRequest();
+		var url = "http://localhost/cgi-bin/fetchnote.py";
+	    //var params = "signupemail=" + document.getElementById("signupemail").value + "&signuppassword=" + document.getElementById("signuppassword").value;
+		var params= " ";
+		http.open("POST", url, true);
+
+//Send the proper header information along with the request
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+		http.onreadystatechange = function() {//Call a function when the state changes.
+		if(http.readyState == 4 && http.status == 200) {
+			latestnote = http.responseText;
+			
+			document.getElementById("note_text").value= latestnote;
+			}
+		}
+		http.send(params);
+		
+	}
+	
+	</script>
+	
+	
+	<script src="assets/js/classie.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/smoothscroll.js"></script>
+	<script src="assets/js/main.js"></script>
+</body>
+</html>
