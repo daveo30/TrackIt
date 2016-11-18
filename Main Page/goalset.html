@@ -1,5 +1,21 @@
 <html>
-<head></head>
+<head>
+<script>
+function getCDate()
+{
+var d = new Date(); // for now
+currentHours=d.getHours(); 
+currentMins=d.getMinutes(); 
+d.getSeconds(); 
+var x=document.getElementById("t");
+x.value=currentHour+":"+currentMins;			
+
+}
+
+
+</script>
+
+</head>
 <body>
 <form action="/cgi-bin/GoalTable.py" method="post">
 <pre>
@@ -17,13 +33,24 @@ Time          <input type="text" name="t2time"/><br/>
 Name          <input type="text" name="t3name"/><br/>
 Time          <input type="text" name="t3time"/><br/>
 <br/>
-<input type="submit" value="Submit Goal" id="subgoal"/>
+Name          <input type="text" name="t4name"/><br/>
+Time          <input type="text" name="t4time"/><br/>
+<br/>
+Name          <input type="text" name="t5name"/><br/>
+Time          <input type="text" name="t3time"/><br/>
+<br/>
+Name          <input type="text" name="t6name"/><br/>
+Time          <input type="text" name="t6time"/><br/>
+<br/>
+
+<input type="text" value="abc" name="t" id="t"/>
+<input type="submit" onclick="getCDate()" value="Submit Goal" id="subgoal"/>
 
 </form>
 </pre>
 
 
-<form>
+
 
 </body>
 </html> 

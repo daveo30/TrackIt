@@ -81,6 +81,7 @@
 			document.getElementById("t1").innerHTML=data[2] ;
 			document.getElementById("t2").innerHTML=data[4] ;
 			document.getElementById("target3").innerHTML=data[6] ;
+			document.getElementById("hours").innerHTML=data[0];
 
 			}
 		}
@@ -238,7 +239,7 @@
 				<br>
 				<h5><a href="test_chart_2.html" target="_blank"> Check Out Goal Progress</a></h5>
 				<br>
-				<h5><a href="barchart.html" target="_blank"> Check Out Goal Progress in a bar chart</a></h5>
+				<h5><a href="goalcharttest1.html" target="_blank"> Check Out Goal Progress in a bar chart</a></h5>
 				<br>
 				<h5><a href="piechart.html" target="_blank"> Check Out Goal Progress in a pie chart</a></h5>
 				<br>
@@ -299,7 +300,8 @@
 			s=(s<10) ?"0" + s :s;
 			
 			document.getElementById("days").innerText=d;
-			document.getElementById("hours").innerText=h;
+				document.getElementById("hours").innerHTML=data[0];
+			//document.getElementById("hours").innerText=h;
 			document.getElementById("minutes").innerText=m;
 			document.getElementById("seconds").innerText=s;
 			

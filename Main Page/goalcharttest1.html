@@ -23,6 +23,7 @@
 
 
 	var data;
+	var target;
 	var i=1;
 		var http = new XMLHttpRequest();
 		var url = "http://localhost/cgi-bin/fetchgoal.py";
@@ -35,25 +36,16 @@
 
 		http.onreadystatechange = function() {//Call a function when the state changes.
 		if(http.readyState == 4 && http.status == 200) {
+		
 			data = http.responseText;
-			data=data.split(',');
-			
-			}
-		}
-		http.send(params);
-		
-		
-		
-var d = new Date(); // for now
-currentHours=d.getHours(); 
-currentMins=d.getMinutes(); 
-d.getSeconds(); 
-			
-var ctx = document.getElementById("myChart");
+			target=data.split(',');
+			var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels:  [currentHours+":"+currentMins, currentHours+1+":"+currentMins, currentHours+2+":"+currentMins, currentHours+3+":"+currentMins, currentHours+4+":"+currentMins, currentHours+5+":"+currentMins, currentHours+6+":"+currentMins],
+        //labels:  [currentHours+":"+currentMins, currentHours+1+":"+currentMins, currentHours+2+":"+currentMins, currentHours+3+":"+currentMins, currentHours+4+":"+currentMins, currentHours+5+":"+currentMins, currentHours+6+":"+currentMins],
+		labels:  [target[2],target[4],target[6]],
+		//labels: ["ab", "cd", "ef", "ij", "kl"],
         datasets: [{
             label: '# of Complete Targets',
             data: [12, 19, 3, 5, 2, 3],
@@ -86,6 +78,19 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+	
+			}
+		}
+		http.send(params);
+	
+targ=data;
+		alert(target[0]);
+var d = new Date(); // for now
+currentHours=d.getHours(); 
+currentMins=d.getMinutes(); 
+d.getSeconds(); 
+			
+
 </script>
 </body>
 </html>
