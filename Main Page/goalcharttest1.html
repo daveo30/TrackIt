@@ -26,7 +26,7 @@
 	var target;
 	var i=1;
 		var http = new XMLHttpRequest();
-		var url = "http://localhost/cgi-bin/fetchgoal.py";
+		var url = "http://localhost/cgi-bin/fetchgst.py";
 	    //var params = "signupemail=" + document.getElementById("signupemail").value + "&signuppassword=" + document.getElementById("signuppassword").value;
 		var params= " ";
 		http.open("POST", url, true);
@@ -39,16 +39,27 @@
 		
 			data = http.responseText;
 			target=data.split(',');
+			var gst=target[2];
+			var tar1time= parseInt(target[4]);
+			var tar2time= parseInt(target[6]);
+			var tar3time= parseInt(target[8]);
+				var a;
+			 a=gst.split(':');
+			var hrgst;
+			alert(a[0]);
+			hrgst = parseInt(a[0]); 
+			
 			var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
         //labels:  [currentHours+":"+currentMins, currentHours+1+":"+currentMins, currentHours+2+":"+currentMins, currentHours+3+":"+currentMins, currentHours+4+":"+currentMins, currentHours+5+":"+currentMins, currentHours+6+":"+currentMins],
-		labels:  [target[2],target[4],target[6]],
+		labels:  [target[3],target[5],target[7]],
 		//labels: ["ab", "cd", "ef", "ij", "kl"],
         datasets: [{
-            label: '# of Complete Targets',
-            data: [12, 19, 3, 5, 2, 3],
+            label: 'time to Complete Target',
+			data: [hrgst+tar1time,hrgst+tar2time,hrgst+tar3time],	
+            //data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -66,9 +77,20 @@ var myChart = new Chart(ctx, {
                 'rgba(255, 159, 64, 1)'
             ],
             borderWidth: 1
-        }]
+        }, {
+			hidden:true,
+			label: 'Planned Progress',
+			data: [tar1time,tar2time,tar3time],
+			
+		
+		}]
     },
     options: {
+	responsive: true,
+	 title:{
+                    display:true,
+                    text:'Progress Line Chart'
+                },
         scales: {
             yAxes: [{
                 ticks: {

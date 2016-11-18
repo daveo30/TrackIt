@@ -63,6 +63,7 @@
 	
 	<script>
 	var data;
+	var imp;
 	var i=1;
 		var http = new XMLHttpRequest();
 		var url = "http://localhost/cgi-bin/fetchgoal.py";
@@ -81,45 +82,13 @@
 			document.getElementById("t1").innerHTML=data[2] ;
 			document.getElementById("t2").innerHTML=data[4] ;
 			document.getElementById("target3").innerHTML=data[6] ;
-			
-			
-			
-			var a = parseInt(data[1]); 
-			imp=a;
-				
-			
-			function countdown(){
-			var now=new Date();
-			currentHours=now.getHours();
-			var eventDate=new Date(2016,10,18,currentHours+imp);
-			var currentTime=now.getTime();
-			var eventTime=eventDate.getTime();
-			var remTim=eventTime-currentTime;
-			var s=Math.floor(remTim/1000);
-			var m=Math.floor(s/60);
-			var h=Math.floor(m/60);
-			var d=Math.floor(h/24);
-			h%=24;
-			m%=60;
-			s%=60;
-			h=(h<10) ? "0" + h :h;
-			m=(m<10) ?"0" + m :m;
-			s=(s<10) ?"0" + s :s;
-			
-			document.getElementById("days").innerText=d;
-			document.getElementById("hours").innerText=h;
-			document.getElementById("minutes").innerText=m;
-			document.getElementById("seconds").innerText=s;
-			
-			setTimeout(countdown,1000);
-			
-			}
-			countdown(); 
-			
-
+		
 			}
 		}
 		http.send(params);
+		
+		
+		
 		
 		</script>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
@@ -267,18 +236,47 @@
 			<div class="row">
 				<h3 id="GName"></h3>
 				
-				<input type="checkbox" id="target1" ><div id="t1"> Target-1 </div><br>
-				<input type="checkbox" id="target2" ><div id="t2"> Target-2 </div><br>
-				<input type="checkbox" id="target3" > Target-3<br>
+				
+				<table style="width:100%" >
+				<tr style="padding-left:40px;padding-right:40px">
+				<th style="text-align:center"> Goal 1 </th>
+				<th style="text-align:center"> Goal 2 </th>
+				<th style="text-align:center"> Goal 3 </th>
+				</tr>
+				<tr style="padding-left:40px;padding-right:40px">
+				<td><input type="checkbox" id="target11" > Target-1 <br> </td>
+				<td><input type="checkbox" id="target12" > Target-1 <br> </td>
+				<td><input type="checkbox" id="target13" > Target-1 <br> </td>
+				</tr>
+				<tr style="padding-left:40px;padding-right:40px">
+				<td><input type="checkbox" id="target21" > Target-2 <br> </td>
+				<td><input type="checkbox" id="target22" > Target-2 <br> </td>
+				<td><input type="checkbox" id="target23" > Target-2 <br> </td>
+				</tr>
+				<tr style="padding-left:40px;padding-right:40px">
+				<td><input type="checkbox" id="target31" > Target-3 <br> </td>
+				<td><input type="checkbox" id="target32" > Target-3 <br> </td>
+				<td><input type="checkbox" id="target33" > Target-3 <br> </td>
+				</tr>
+				
+				
+				
+				</table>
+				
+				
+				
 				<br>
-				<h5><a href="test_chart_2.html" target="_blank"> Check Out Goal Progress</a></h5>
 				<br>
-				<h5><a href="goalcharttest1.html" target="_blank"> Check Out Goal Progress in a bar chart</a></h5>
-				<br>
-				<h5><a href="piechart.html" target="_blank"> Check Out Goal Progress in a pie chart</a></h5>
 				<br>
 				
-				<p><h3>Goal-1</h3>
+				<table style="width:100%">
+				<tr>
+				
+				<td><button class="button medium-btn button4" onclick="window.open('goalcharttest1.html')"    >View Progress</button> </td>
+				<td><button class="button medium-btn button4" onclick="" >Submit Progress</button> </td>
+				</tr>
+				
+				</table>
 				
 			</div>
 		</div><!-- /container -->
@@ -316,12 +314,61 @@
 			</tr>
 			</table>
 			<script type="text/javascript">
-	
+			
+			var data;
+	var imp;
+	var i=1;
+		var http = new XMLHttpRequest();
+		var url = "http://localhost/cgi-bin/fetchgoal.py";
+	    //var params = "signupemail=" + document.getElementById("signupemail").value + "&signuppassword=" + document.getElementById("signuppassword").value;
+		var params= " ";
+		http.open("POST", url, true);
+
+//Send the proper header information along with the request
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+		http.onreadystatechange = function() {//Call a function when the state changes.
+		if(http.readyState == 4 && http.status == 200) {
+			data = http.responseText;
+			data=data.split(',');
+			imp=data[1];
+			}
+		}
+		http.send(params);
+		
 			
 			
 			
 			//imp=4;
-		
+			
+			
+			function countdown(){
+			var now=new Date();
+			currentHours=now.getHours();
+			var eventDate=new Date(2016,10,18,currentHours+imp);
+			var currentTime=now.getTime();
+			var eventTime=eventDate.getTime();
+			var remTim=eventTime-currentTime;
+			var s=Math.floor(remTim/1000);
+			var m=Math.floor(s/60);
+			var h=Math.floor(m/60);
+			var d=Math.floor(h/24);
+			h%=24;
+			m%=60;
+			s%=60;
+			h=(h<10) ? "0" + h :h;
+			m=(m<10) ?"0" + m :m;
+			s=(s<10) ?"0" + s :s;
+			
+			document.getElementById("days").innerText=d;
+			document.getElementById("hours").innerText=h;
+			document.getElementById("minutes").innerText=m;
+			document.getElementById("seconds").innerText=s;
+			
+			setTimeout(countdown,1000);
+			
+			}
+			countdown(); 
 			</script>			
 			</div>	
 		</div><!-- /container -->
@@ -416,7 +463,29 @@ window.onclick = function(event) {
 		audio.play();
 	}
 	
-	
+		function submittargets()
+	{
+		var latestnote;
+
+		var http = new XMLHttpRequest();
+		var url = "http://localhost/cgi-bin/fetchnote.py";
+	    //var params = "signupemail=" + document.getElementById("signupemail").value + "&signuppassword=" + document.getElementById("signuppassword").value;
+		var params= " ";
+		http.open("POST", url, true);
+
+//Send the proper header information along with the request
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+		http.onreadystatechange = function() {//Call a function when the state changes.
+		if(http.readyState == 4 && http.status == 200) {
+			latestnote = http.responseText;
+			
+			document.getElementById("note_text").value= latestnote;
+			}
+		}
+		http.send(params);
+		
+	}
 	
 	function submit()
 	{

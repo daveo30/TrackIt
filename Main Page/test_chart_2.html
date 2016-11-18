@@ -8,6 +8,7 @@
     <script src="chart.js/Chart.bundle.js"></script>
 	
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	
     <style>
     canvas{
         -moz-user-select: none;
@@ -29,11 +30,41 @@
     <button id="removeDataset">Remove Goal</button>
     <button id="addData">Add Data</button>
     <button id="removeData">Remove Data</button>
+	
+	
+	<script>
+		
+	</script>
     <script>
+	
+	
+		var http = new XMLHttpRequest();
+		var url = "http://localhost/cgi-bin/fetchgst.py";
+	    //var params = "signupemail=" + document.getElementById("signupemail").value + "&signuppassword=" + document.getElementById("signuppassword").value;
+		var params= " ";
+		http.open("POST", url, true);
+
+//Send the proper header information along with the request
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+		http.onreadystatechange = function() {//Call a function when the state changes.
+		if(http.readyState == 4 && http.status == 200) {
+			
+			datag = http.responseText;
+			
+			}
+	http.send(params);
+
+		
 	  var d = new Date(); // for now
 currentHours=d.getHours(); 
 currentMins=d.getMinutes(); 
 d.getSeconds(); 
+
+	
+	
+
+
 			
 
         var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -49,6 +80,7 @@ d.getSeconds();
         var randomColor = function(opacity) {
             return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',' + (opacity || '.3') + ')';
         };
+			
         var config = {
             type: 'line',
             data: {
@@ -126,6 +158,7 @@ d.getSeconds();
                 }
             }
         };
+	
         $.each(config.data.datasets, function(i, dataset) {
             dataset.borderColor = randomColor(0.4);
             dataset.backgroundColor = randomColor(0.5);
@@ -133,11 +166,15 @@ d.getSeconds();
             dataset.pointBackgroundColor = randomColor(0.5);
             dataset.pointBorderWidth = 1;
         });
+	
         window.onload = function() {
             var ctx = document.getElementById("canvas").getContext("2d");
             window.myLine = new Chart(ctx, config);
         };
-        $('#randomizeData').click(function() {
+		
+			
+		
+    /*    $('#randomizeData').click(function() {
             $.each(config.data.datasets, function(i, dataset) {
                 dataset.data = dataset.data.map(function() {
                     return randomScalingFactor();
@@ -168,6 +205,8 @@ d.getSeconds();
             // Update the chart
             window.myLine.update();
         });
+		
+	
         $('#addDataset').click(function() {
             var newDataset = {
                 label: 'Dataset ' + config.data.datasets.length,
@@ -204,7 +243,8 @@ d.getSeconds();
                 dataset.data.pop();
             });
             window.myLine.update();
-        });
+        });*/
+		
     </script>
 </body>
 
