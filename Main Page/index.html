@@ -81,7 +81,41 @@
 			document.getElementById("t1").innerHTML=data[2] ;
 			document.getElementById("t2").innerHTML=data[4] ;
 			document.getElementById("target3").innerHTML=data[6] ;
-			document.getElementById("hours").innerHTML=data[0];
+			
+			
+			
+			var a = parseInt(data[1]); 
+			imp=a;
+				
+			
+			function countdown(){
+			var now=new Date();
+			currentHours=now.getHours();
+			var eventDate=new Date(2016,10,18,currentHours+imp);
+			var currentTime=now.getTime();
+			var eventTime=eventDate.getTime();
+			var remTim=eventTime-currentTime;
+			var s=Math.floor(remTim/1000);
+			var m=Math.floor(s/60);
+			var h=Math.floor(m/60);
+			var d=Math.floor(h/24);
+			h%=24;
+			m%=60;
+			s%=60;
+			h=(h<10) ? "0" + h :h;
+			m=(m<10) ?"0" + m :m;
+			s=(s<10) ?"0" + s :s;
+			
+			document.getElementById("days").innerText=d;
+			document.getElementById("hours").innerText=h;
+			document.getElementById("minutes").innerText=m;
+			document.getElementById("seconds").innerText=s;
+			
+			setTimeout(countdown,1000);
+			
+			}
+			countdown(); 
+			
 
 			}
 		}
@@ -282,33 +316,12 @@
 			</tr>
 			</table>
 			<script type="text/javascript">
-			function countdown(){
-			var now=new Date();
-			var eventDate=new Date(2016,11,25);
-			var currentTime=now.getTime();
-			var eventTime=eventDate.getTime();
-			var remTim=eventTime-currentTime;
-			var s=Math.floor(remTim/1000);
-			var m=Math.floor(s/60);
-			var h=Math.floor(m/60);
-			var d=Math.floor(h/24);
-			h%=24;
-			m%=60;
-			s%=60;
-			h=(h<10) ? "0" + h :h;
-			m=(m<10) ?"0" + m :m;
-			s=(s<10) ?"0" + s :s;
+	
 			
-			document.getElementById("days").innerText=d;
-				document.getElementById("hours").innerHTML=data[0];
-			//document.getElementById("hours").innerText=h;
-			document.getElementById("minutes").innerText=m;
-			document.getElementById("seconds").innerText=s;
 			
-			setTimeout(countdown,1000);
 			
-			}
-			countdown(); 
+			//imp=4;
+		
 			</script>			
 			</div>	
 		</div><!-- /container -->
