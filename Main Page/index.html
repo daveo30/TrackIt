@@ -63,7 +63,6 @@
 	
 	<script>
 	var data;
-	var imp;
 	var i=1;
 		var http = new XMLHttpRequest();
 		var url = "http://localhost/cgi-bin/fetchgoal.py";
@@ -78,19 +77,53 @@
 		if(http.readyState == 4 && http.status == 200) {
 			data = http.responseText;
 			data=data.split(',');
-			document.getElementById("GName").innerHTML=data[0] ;
-			document.getElementById("t1").innerHTML=data[2] ;
-			document.getElementById("t2").innerHTML=data[4] ;
-			document.getElementById("target3").innerHTML=data[6] ;
-		
+			document.getElementById("g1name").innerHTML=data[0] ;
+			document.getElementById("t11name").innerHTML=data[2] ;
+			document.getElementById("t21name").innerHTML=data[4] ;
+			document.getElementById("t31name").innerHTML=data[6] ;
+			
+			
+			alert(data[1]);
+			
+			var a = parseInt(data[1]); 
+			imp=a;
+				
+			
+			function countdown(){
+			var now=new Date();
+			currentHours=now.getHours();
+			var eventDate=new Date(2016,10,18,currentHours+imp);
+			var currentTime=now.getTime();
+			var eventTime=eventDate.getTime();
+			var remTim=eventTime-currentTime;
+			var s=Math.floor(remTim/1000);
+			var m=Math.floor(s/60);
+			var h=Math.floor(m/60);
+			var d=Math.floor(h/24);
+			h%=24;
+			m%=60;
+			s%=60;
+			h=(h<10) ? "0" + h :h;
+			m=(m<10) ?"0" + m :m;
+			s=(s<10) ?"0" + s :s;
+			
+			document.getElementById("days").innerText=d;
+			document.getElementById("hours").innerText=h;
+			document.getElementById("minutes").innerText=m;
+			document.getElementById("seconds").innerText=s;
+			
+			setTimeout(countdown,1000);
+			
+			}
+			countdown(); 
+			
+
 			}
 		}
 		http.send(params);
 		
-		
-		
-		
 		</script>
+    <link href='http://fonts.googleapis.com/css?family=La
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -236,33 +269,38 @@
 			<div class="row">
 				<h3 id="GName"></h3>
 				
-				
+				<form action="/cgi-bin/targetftentry.py" method="post">
 				<table style="width:100%" >
 				<tr style="padding-left:40px;padding-right:40px">
-				<th style="text-align:center"> Goal 1 </th>
-				<th style="text-align:center"> Goal 2 </th>
-				<th style="text-align:center"> Goal 3 </th>
+				<th style="text-align:center" > <span id="g1name" name="g1name"/> </th>
+				<th style="text-align:center" id="g2name"> Goal 2 </th>
+				<th style="text-align:center" id="g3name"> Goal 3 </th>
 				</tr>
 				<tr style="padding-left:40px;padding-right:40px">
-				<td><input type="checkbox" id="target11" > Target-1 <br> </td>
-				<td><input type="checkbox" id="target12" > Target-1 <br> </td>
-				<td><input type="checkbox" id="target13" > Target-1 <br> </td>
+				<td><input type="checkbox" id="target11" name="target11" > <span id="t11name"/> <br> </td>
+				<td><input type="checkbox" id="target12" name="target12">  <br> </td>
+				<td><input type="checkbox" id="target13" name="target13"> <span id="t13name"/> <br> </td>
 				</tr>
 				<tr style="padding-left:40px;padding-right:40px">
-				<td><input type="checkbox" id="target21" > Target-2 <br> </td>
-				<td><input type="checkbox" id="target22" > Target-2 <br> </td>
-				<td><input type="checkbox" id="target23" > Target-2 <br> </td>
+				<td><input type="checkbox" id="target21" name="target21"> <span id="t21name"/> <br> </td>
+				<td><input type="checkbox" id="target22" name="target22"> Target-2 <br> </td>
+				<td><input type="checkbox" id="target23" name="target23" > Target-2 <br> </td>
 				</tr>
 				<tr style="padding-left:40px;padding-right:40px">
-				<td><input type="checkbox" id="target31" > Target-3 <br> </td>
-				<td><input type="checkbox" id="target32" > Target-3 <br> </td>
-				<td><input type="checkbox" id="target33" > Target-3 <br> </td>
+				<td><input type="checkbox" id="target31" name="target31"> <span id="t31name"/><br> </td>
+				<td><input type="checkbox" id="target32" name="target32"> Target-3 <br> </td>
+				<td><input type="checkbox" id="target33" name="target33"> Target-3 <br> </td>
 				</tr>
+				
 				
 				
 				
 				</table>
 				
+				
+				<input type="text" value="abc" name="targtime" id="targtime"/>
+				<input type="submit" onclick="getCDate()" value="Submit Targets" id="subtarg"/>
+				</form>
 				
 				
 				<br>
@@ -281,6 +319,19 @@
 			</div>
 		</div><!-- /container -->
 	</div><!-- /g -->
+	
+	<script>
+	function getCDate()
+{
+var d = new Date(); // for now
+currentHours=d.getHours(); 
+currentMins=d.getMinutes(); 
+d.getSeconds(); 
+var x=document.getElementById("targtime");
+x.value=currentHours+":"+currentMins;			
+
+}
+</script>
 	
 
 	<section id="portfolio" name="portfolio"></section>
@@ -313,63 +364,7 @@
 			<td style="padding:25px;">Seconds</td>
 			</tr>
 			</table>
-			<script type="text/javascript">
 			
-			var data;
-	var imp;
-	var i=1;
-		var http = new XMLHttpRequest();
-		var url = "http://localhost/cgi-bin/fetchgoal.py";
-	    //var params = "signupemail=" + document.getElementById("signupemail").value + "&signuppassword=" + document.getElementById("signuppassword").value;
-		var params= " ";
-		http.open("POST", url, true);
-
-//Send the proper header information along with the request
-		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-		http.onreadystatechange = function() {//Call a function when the state changes.
-		if(http.readyState == 4 && http.status == 200) {
-			data = http.responseText;
-			data=data.split(',');
-			imp=data[1];
-			}
-		}
-		http.send(params);
-		
-			
-			
-			
-			//imp=4;
-			
-			
-			function countdown(){
-			var now=new Date();
-			currentHours=now.getHours();
-			var eventDate=new Date(2016,10,18,currentHours+imp);
-			var currentTime=now.getTime();
-			var eventTime=eventDate.getTime();
-			var remTim=eventTime-currentTime;
-			var s=Math.floor(remTim/1000);
-			var m=Math.floor(s/60);
-			var h=Math.floor(m/60);
-			var d=Math.floor(h/24);
-			h%=24;
-			m%=60;
-			s%=60;
-			h=(h<10) ? "0" + h :h;
-			m=(m<10) ?"0" + m :m;
-			s=(s<10) ?"0" + s :s;
-			
-			document.getElementById("days").innerText=d;
-			document.getElementById("hours").innerText=h;
-			document.getElementById("minutes").innerText=m;
-			document.getElementById("seconds").innerText=s;
-			
-			setTimeout(countdown,1000);
-			
-			}
-			countdown(); 
-			</script>			
 			</div>	
 		</div><!-- /container -->
 	</div><!-- /portfoliowrap -->
@@ -468,7 +463,7 @@ window.onclick = function(event) {
 		var latestnote;
 
 		var http = new XMLHttpRequest();
-		var url = "http://localhost/cgi-bin/fetchnote.py";
+		var url = "http://localhost/cgi-bin/targetftentry.py";
 	    //var params = "signupemail=" + document.getElementById("signupemail").value + "&signuppassword=" + document.getElementById("signuppassword").value;
 		var params= " ";
 		http.open("POST", url, true);
