@@ -1,6 +1,25 @@
-<html>
-<head>
-<script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>Set Goals</title>
+  <link href="assets/css/main.css" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+    <script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/Chart.js"></script>
+	<script src="assets/js/modernizr.custom.js"></script>
+	
+
+	
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+	
+
+	
+	
+	
+	
+	<script>
 function getCDate()
 {
 var d = new Date(); // for now
@@ -12,45 +31,141 @@ x.value=currentHours+":"+currentMins;
 
 }
 
+function openMainPage(){
 
+}
 </script>
-
 </head>
-<body>
+
+
+
+
+
+<body data-spy="scroll" data-offset="0" data-target="#theMenu">
+		
+	
 <form action="/cgi-bin/GoalTable.py" method="post">
-<pre>
-Goal Name     <input type="text" name="gname"/><br/>
-Time Duration <input type="text" name="gtime"/><br/>
+	
+		<!-- ========== SERVICES - GREY SECTION ========== -->
+	<div id="g" style="text-align:center;   font-family:Raleway;">
+		<div class="container">
+			<div class="row">
+			
+				<pre>
+<h2><b>Goal Name:	                                      Time Duration:</b> </h2>
+<input type="text" name="gname" style="font-size: 20px;"/>	                 <input type="text" name="gtime" style="font-size: 20px;"/>
+
+				</pre>
+				
+			</div>
+		</div><!-- /container -->
+	</div><!-- /g -->
+	
+	
+	
+	
+	<!-- ========== HEADER SECTION ========== -->
+	<div id="itemwrap"  style="text-align:center; color:#ffffff; font-family:Raleway;">
+		<div class="container">
+<pre style="font-size: 20px;">
+<h2 style="color:#ffffff"><b>Targets:</b></h2>
+
+Name          <input type="text" name="t1name" style="font-size: 20px;"/><br/>
+Time          <input type="text" name="t1time" style="font-size: 20px;"/><br/>
 <br/>
+Name          <input type="text" name="t2name"style="font-size: 20px;"/><br/>
+Time          <input type="text" name="t2time" style="font-size: 20px;"/><br/>
 <br/>
-Targets:<br/>
-Name          <input type="text" name="t1name"/><br/>
-Time          <input type="text" name="t1time"/><br/>
+Name          <input type="text" name="t3name" style="font-size: 20px;"><br/>
+Time          <input type="text" name="t3time" style="font-size: 20px;"><br/>
 <br/>
-Name          <input type="text" name="t2name"/><br/>
-Time          <input type="text" name="t2time"/><br/>
+Name          <input type="text" name="t4name" style="font-size: 20px;"/><br/>
+Time          <input type="text" name="t4time" style="font-size: 20px;"/><br/>
 <br/>
-Name          <input type="text" name="t3name"/><br/>
-Time          <input type="text" name="t3time"/><br/>
+Name          <input type="text" name="t5name" style="font-size: 20px;"/><br/>
+Time          <input type="text" name="t3time" style="font-size: 20px;"/><br/>
 <br/>
-Name          <input type="text" name="t4name"/><br/>
-Time          <input type="text" name="t4time"/><br/>
-<br/>
-Name          <input type="text" name="t5name"/><br/>
-Time          <input type="text" name="t3time"/><br/>
-<br/>
-Name          <input type="text" name="t6name"/><br/>
-Time          <input type="text" name="t6time"/><br/>
+Name          <input type="text" name="t6name" style="font-size: 20px;"/><br/>
+Time          <input type="text" name="t6time" style="font-size: 20px;"/><br/>
 <br/>
 
-<input type="text" value="abc" name="t" id="t"/>
-<input type="submit" onclick="getCDate()" value="Submit Goal" id="subgoal"/>
 
-</form>
 </pre>
+			<div class="row">
+				<br>
+				<br>
+				<br>
+				<div class="col-lg-6 col-lg-offset-3">
+				</div>
+			</div>
+		</div><!-- /container -->
+	</div><!-- /headerwrap -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		<!-- ========== FOOTER SECTION ========== -->
+	<div id="f" style="font-family:Raleway;">
+		<div class="container">
+			<div class="row">
+				
+					<br>
+<input type="submit" onclick="getCDate();window.open('index.html')"" value="Submit Goal" id="subgoal"  style="background-color: #f2f2f2;
+    color: black;
+    border: 2px solid #f2f2f2;
+	border-radius: 8px;
+	font-size: 20px;
+	padding: 16px;"/> 
+<!--	<button class="button medium-btn button4" onclick="getCDate()"  >Set Goals</button> -->
+			</div>
+		</div><!-- /container -->
+	</div><!-- /f -->
 
-
-
-
+	
+	
+	<!-- ========== WHITE SECTION ========== -->
+	<div id="w">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+								<h3><i>“By recording your dreams and goals on paper, you set in motion the process of becoming the person you most want to be. Put your future in good hands — your own.” </i>–Mark Victor Hansen
+<input type="text" value="abc" name="t" id="t" style="color:#ffffff; border:none"/>
+				</div>
+			</div>
+		</div><!-- /container -->
+	</div><!-- /w -->
+	
+</form>	
+	
+	    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="assets/js/classie.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/retina.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script>
+	$('.carousel').carousel({
+	  interval: 3500
+	})
+	</script>
 </body>
-</html> 
+</html>
+
+	
+	
+	
+	
+	
+	
+	
+	

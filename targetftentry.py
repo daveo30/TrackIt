@@ -14,8 +14,8 @@ conn = sqlite3.connect('trackit.db')
 gname= form.getvalue('g1name')
 
 t1check= form.getvalue('target11')
-#t2check= form.getvalue('target21')
-#t3check= form.getvalue('target31')
+t2check= form.getvalue('target21')
+t3check= form.getvalue('target31')
 
 
 tftval = form.getvalue('targtime')
@@ -32,9 +32,16 @@ try:
 	if t1check is not None:
 		print(tftval)
 		conn.execute("UPDATE GOAL SET T1FT = '"+tftval+"' WHERE GNAME= '"+gname+"';")
+		
+		
+	if t2check is not None:
+		conn.execute("UPDATE GOAL SET T2FT = '"+tftval+"' WHERE GNAME= '"+gname+"';")
+		
+	if t3check is not None:
+		conn.execute("UPDATE GOAL SET T3FT = '"+tftval+"' WHERE GNAME= '"+gname+"';")
 
-		conn.commit()
-		print ("Done!!")
+	conn.commit()
+	print ("Done!!")
 	
 except:
 	print ("Error!")

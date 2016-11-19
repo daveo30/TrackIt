@@ -14,7 +14,7 @@
 	.button4 {
     background-color: #f2f2f2;
     color: black;
-    border: 2px solid #f2f2f2;
+    border: 2px solid #ffffff;
 	border-radius: 8px;
 	font-size: 20px;
 	padding: 16px;
@@ -65,7 +65,9 @@
 	var data;
 	var i=1;
 		var http = new XMLHttpRequest();
+		var http1 = new XMLHttpRequest();
 		var url = "http://localhost/cgi-bin/fetchgoal.py";
+		
 	    //var params = "signupemail=" + document.getElementById("signupemail").value + "&signuppassword=" + document.getElementById("signuppassword").value;
 		var params= " ";
 		http.open("POST", url, true);
@@ -82,6 +84,19 @@
 			document.getElementById("t21name").innerHTML=data[4] ;
 			document.getElementById("t31name").innerHTML=data[6] ;
 			
+			document.getElementById("g2name").value=data[7] ;
+			document.getElementById("t12name").innerHTML=data[9] ;
+			document.getElementById("t22name").innerHTML=data[11] ;
+			document.getElementById("t32name").innerHTML=data[13] ;
+			
+			
+			document.getElementById("g3name").value=data[14] ;
+			document.getElementById("t13name").innerHTML=data[16] ;
+			document.getElementById("t23name").innerHTML=data[18] ;
+			document.getElementById("t33name").innerHTML=data[20] ;
+		
+		
+			
 			
 			
 			var a = parseInt(data[1]); 
@@ -91,7 +106,7 @@
 			function countdown(){
 			var now=new Date();
 			currentHours=now.getHours();
-			var eventDate=new Date(2016,10,18,currentHours+imp);
+			var eventDate=new Date(2016,10,19,currentHours+imp);
 			var currentTime=now.getTime();
 			var eventTime=eventDate.getTime();
 			var remTim=eventTime-currentTime;
@@ -120,6 +135,33 @@
 			}
 		}
 		http.send(params);
+		
+		
+		
+		</script>
+		<script>
+		var data1;
+		
+		var http1 = new XMLHttpRequest();
+		var url1 = "http://localhost/cgi-bin/fetchgoal2.py";
+	    //var params = "signupemail=" + document.getElementById("signupemail").value + "&signuppassword=" + document.getElementById("signuppassword").value;
+		var params1= " ";
+		http1.open("POST", url1, true);
+
+//Send the proper header information along with the request
+		http1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+		http1.onreadystatechange = function() {//Call a function when the state changes.
+		if(http1.readyState == 4 && http1.status == 200) {
+			data1 = http1.responseText;
+			data1=data1.split(',');
+			alert(data1[0]);
+			document.getElementById("g2name").value=data1[0] ;
+			document.getElementById("t12name").innerHTML=data1[2] ;
+			document.getElementById("t22name").innerHTML=data1[4] ;
+			document.getElementById("t32name").innerHTML=data1[6] ;
+			}
+		http1.send(params1);
 		
 		</script>
     <link href='http://fonts.googleapis.com/css?family=La
@@ -272,23 +314,23 @@
 				<table style="width:100%" >
 				<tr style="padding-left:40px;padding-right:40px">
 				<th style="text-align:center" > <input type="text" id="g1name" name="g1name"/> </th>
-				<th style="text-align:center" id="g2name"> Goal 2 </th>
-				<th style="text-align:center" id="g3name"> Goal 3 </th>
+				<th style="text-align:center"> <input type="text" id="g2name" name="g2name"/> </th>
+				<th style="text-align:center"> <input type="text" id="g3name" name="g3name"/> </th>
 				</tr>
 				<tr style="padding-left:40px;padding-right:40px">
 				<td><input type="checkbox" id="target11" name="target11" > <span id="t11name"/> <br> </td>
-				<td><input type="checkbox" id="target12" name="target12">  <br> </td>
+				<td><input type="checkbox" id="target12" name="target12">   <span id="t12name"/> <br> </td>
 				<td><input type="checkbox" id="target13" name="target13"> <span id="t13name"/> <br> </td>
 				</tr>
 				<tr style="padding-left:40px;padding-right:40px">
 				<td><input type="checkbox" id="target21" name="target21"> <span id="t21name"/> <br> </td>
-				<td><input type="checkbox" id="target22" name="target22"> Target-2 <br> </td>
-				<td><input type="checkbox" id="target23" name="target23" > Target-2 <br> </td>
+				<td><input type="checkbox" id="target22" name="target22"> <span id="t22name"/> <br> </td>
+				<td><input type="checkbox" id="target23" name="target23" > <span id="t23name"/> <br> </td>
 				</tr>
 				<tr style="padding-left:40px;padding-right:40px">
 				<td><input type="checkbox" id="target31" name="target31"> <span id="t31name"/><br> </td>
-				<td><input type="checkbox" id="target32" name="target32"> Target-3 <br> </td>
-				<td><input type="checkbox" id="target33" name="target33"> Target-3 <br> </td>
+				<td><input type="checkbox" id="target32" name="target32"> <span id="t32name"/> <br> </td>
+				<td><input type="checkbox" id="target33" name="target33">  <span id="t33name"/>  <br> </td>
 				</tr>
 				
 				
@@ -297,9 +339,9 @@
 				</table>
 				
 				
-				<input type="text" value="abc" name="targtime" id="targtime"/>
-				<input type="submit" onclick="getCDate()" value="Submit Targets" id="subtarg"/>
-				</form>
+				<input type="text" value="abc" name="targtime" id="targtime" style="color:#f2f2f2; border:none; background-color:#f2f2f2"/>
+				
+				
 				
 				
 				<br>
@@ -309,12 +351,18 @@
 				<table style="width:100%">
 				<tr>
 				
-				<td><button class="button medium-btn button4" onclick="window.open('goalcharttest1.html')"    >View Progress</button> </td>
-				<td><button class="button medium-btn button4" onclick="" >Submit Progress</button> </td>
+				<td><button class="button medium-btn button4" onclick="window.open('goalcharttest1.html')"   style="text-align:center" >View Progress</button> </td>
+				<!--<td><button class="button medium-btn button4" onclick="" >Submit Progress</button> </td> -->
+				<td><input type="submit" onclick="getCDate()" value="Submit Targets" id="subtarg"  style="  background-color: #f2f2f2;
+    color: black;
+    border: 2px solid #ffffff;
+	border-radius: 8px;
+	font-size: 20px;
+	padding: 16px; text-align:center"/></td>
 				</tr>
 				
 				</table>
-				
+				</form>
 			</div>
 		</div><!-- /container -->
 	</div><!-- /g -->

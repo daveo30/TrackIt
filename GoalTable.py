@@ -38,19 +38,6 @@ t2name=t2name.strip()
 
 t3name=t3name.strip()
 print("Content-type:text/html\n\n")
-print('<html>')
-print('<head>')
-print('<title>Result</title>')
-print ('</head>')
-print ('<body>')
 
-try:
-	conn.execute("INSERT INTO GOAL(GNAME, GTIME, GST, T1NAME, T1TIME, T2NAME, T2TIME, T3NAME, T3TIME) VALUES('"+goalname+"', '"+goaltime+"', '"+gstval+"', '"+t1name+"', '"+t1time+"', '"+t2name+"', '"+t2time+"', '"+t3name+"', '"+t3time+"');")
-
-	conn.commit()
-	print ("Done!!")
-except:
-	print ("Error!")
-
-print ('</body>')
-print ('</html>')
+conn.execute("INSERT INTO GOAL(GNAME, GTIME, GST, T1NAME, T1TIME, T2NAME, T2TIME, T3NAME, T3TIME) VALUES('"+goalname+"', '"+goaltime+"', '"+gstval+"', '"+t1name+"', '"+t1time+"', '"+t2name+"', '"+t2time+"', '"+t3name+"', '"+t3time+"');")
+conn.commit()
