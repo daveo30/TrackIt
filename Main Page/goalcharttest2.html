@@ -39,10 +39,11 @@
 		
 			data = http.responseText;
 			target=data.split(',');
-			var gst=target[2];
-			var tar1time= parseInt(target[4]);
-			var tar2time= parseInt(target[7]);
-			var tar3time= parseInt(target[10]);
+			var gst=target[14];
+			alert(target[14]);
+			var tar1time= parseInt(target[16]);
+			var tar2time= parseInt(target[19]);
+			var tar3time= parseInt(target[22]);
 	
 			
 				var a;
@@ -56,7 +57,7 @@
 			var mngst=parseInt(a[1]);
 			
 			
-			var tar1fintime=target[5];
+			var tar1fintime=target[17];
 			b=tar1fintime.split(':');
 			var tar1num=b[0]+b[1];
 			var hrt1ft=parseInt(tar1num);
@@ -65,7 +66,7 @@
 			
 			
 			
-			var tar2fintime=target[8];
+			var tar2fintime=target[20];
 			b=tar2fintime.split(':');
 			var tar2num=b[0]+b[1];
 			var hrt2ft=parseInt(tar2num);
@@ -73,8 +74,8 @@
 			
 			
 			
-			alert(target[11]);
-			var tar3fintime=target[11];
+			alert(target[23]);
+			var tar3fintime=target[23];
 			b=tar3fintime.split(':');
 			var tar3num=b[0]+b[1];
 			var hrt3ft=parseInt(tar3num);
@@ -83,10 +84,10 @@
 			
 			var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'pie',
     data: {
         //labels:  [currentHours+":"+currentMins, currentHours+1+":"+currentMins, currentHours+2+":"+currentMins, currentHours+3+":"+currentMins, currentHours+4+":"+currentMins, currentHours+5+":"+currentMins, currentHours+6+":"+currentMins],
-		labels:  [target[3],target[6],target[9]],
+		labels:  [target[15],target[18],target[21]],
 		//labels: ["ab", "cd", "ef", "ij", "kl"],
         datasets: [{
             label: 'time to Complete Target',
