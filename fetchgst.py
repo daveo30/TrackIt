@@ -16,3 +16,10 @@ for i in range(0,12):
 	print (data[0][i])
 	print (",")
 
+for i in range(0,12):
+	print (data1[0][i])
+	print (",")
+	
+for i in range(0,12):
+	print (data2[0][i])
+	print (",")
