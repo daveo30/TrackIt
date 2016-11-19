@@ -77,13 +77,12 @@
 		if(http.readyState == 4 && http.status == 200) {
 			data = http.responseText;
 			data=data.split(',');
-			document.getElementById("g1name").innerHTML=data[0] ;
+			document.getElementById("g1name").value=data[0] ;
 			document.getElementById("t11name").innerHTML=data[2] ;
 			document.getElementById("t21name").innerHTML=data[4] ;
 			document.getElementById("t31name").innerHTML=data[6] ;
 			
 			
-			alert(data[1]);
 			
 			var a = parseInt(data[1]); 
 			imp=a;
@@ -272,7 +271,7 @@
 				<form action="/cgi-bin/targetftentry.py" method="post">
 				<table style="width:100%" >
 				<tr style="padding-left:40px;padding-right:40px">
-				<th style="text-align:center" > <span id="g1name" name="g1name"/> </th>
+				<th style="text-align:center" > <input type="text" id="g1name" name="g1name"/> </th>
 				<th style="text-align:center" id="g2name"> Goal 2 </th>
 				<th style="text-align:center" id="g3name"> Goal 3 </th>
 				</tr>

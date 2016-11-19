@@ -41,24 +41,38 @@
 			target=data.split(',');
 			var gst=target[2];
 			var tar1time= parseInt(target[4]);
-			var tar2time= parseInt(target[6]);
-			var tar3time= parseInt(target[8]);
+			var tar2time= parseInt(target[7]);
+			var tar3time= parseInt(target[10]);
+	
+			
 				var a;
 			 a=gst.split(':');
+			var gstnum=a[0]+a[1];
 			var hrgst;
-			alert(a[0]);
-			hrgst = parseInt(a[0]); 
+			
+			hrgst = parseInt(gstnum);
+			fin_gst= hrgst/100.0;
+			
+			var mngst=parseInt(a[1]);
+			
+			
+			var tar1fintime=target[5];
+			b=tar1fintime.split(':');
+			var tar1num=b[0]+b[1];
+			var hrt1ft=parseInt(tar1num);
+			fin_t1ft= hrt1ft/100.0;
+			
 			
 			var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
         //labels:  [currentHours+":"+currentMins, currentHours+1+":"+currentMins, currentHours+2+":"+currentMins, currentHours+3+":"+currentMins, currentHours+4+":"+currentMins, currentHours+5+":"+currentMins, currentHours+6+":"+currentMins],
-		labels:  [target[3],target[5],target[7]],
+		labels:  [target[3],target[6],target[9]],
 		//labels: ["ab", "cd", "ef", "ij", "kl"],
         datasets: [{
             label: 'time to Complete Target',
-			data: [hrgst+tar1time,hrgst+tar2time,hrgst+tar3time],	
+			data: [(fin_t1ft-fin_gst).toFixed(2),	1,2],	
             //data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
